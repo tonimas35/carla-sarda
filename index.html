@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="ca">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>El Mas · Lloguer vacacional</title>
+<meta name="description" content="Un mas sencer per llogar, portat per dues germanes.">
+<!-- Esborrany: treure quan la web sigui definitiva -->
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  /* Identitat provisional, treta dels materials que fa servir la Carla.
+     Quan arribi la del dissenyador, només cal canviar aquests valors. */
+  :root {
+    --paper: #f3eee6;
+    --ink: #2a1e16;
+    --muted: #7a6d5d;
+    --rule: rgba(42, 30, 22, .16);
+    --oak: #b08155;
+    --walnut: #5a3d2b;
+    --linen: #ddd2c1;
+    --sage: #a9a99a;
+    --clay: #b8653f;
+    --tile: #ebe4d8;
+    --grout: #cfc3b0;
+    --font: "EB Garamond", Georgia, "Times New Roman", serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html {
+    background: var(--paper);
+    color: var(--ink);
+    font: 400 1.1875rem/1.5 var(--font);
+    font-variant-numeric: oldstyle-nums;
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+  }
+
+  body { background: var(--paper); }
+
+  a { color: inherit; text-decoration: none; }
+  a:hover, a:focus-visible { text-decoration: underline; text-underline-offset: .2em; text-decoration-thickness: 1px; }
+
+  .wrap { max-width: 72rem; margin: 0 auto; padding: 0 clamp(1.25rem, 4vw, 3rem); }
+
+  .draft {
+    padding-top: 1rem;
+    font-size: .875rem;
+    font-style: italic;
+    color: var(--muted);
+  }
+
+  header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: .75rem 2rem;
+    padding: 1.25rem 0 2.5rem;
+  }
+
+  .mark { font-size: 1.75rem; font-weight: 500; letter-spacing: -.01em; }
+
+  nav { display: flex; flex-wrap: wrap; gap: .25rem 1.5rem; }
+
+  /* Fotos pendents: blocs de color amb el nom de l'espai */
+  figure .ph { background: var(--oak); aspect-ratio: 4 / 5; }
+  figure.wide .ph { aspect-ratio: 3 / 2; }
+  @media (min-width: 48rem) { figure.wide .ph { aspect-ratio: 16 / 9; } }
+  figcaption {
+    padding-top: .5rem;
+    font-size: .9375rem;
+    font-style: italic;
+    color: var(--muted);
+  }
+
+  .intro {
+    display: grid;
+    gap: 1.5rem 3rem;
+    padding: 2.5rem 0 6rem;
+  }
+  h1 {
+    font-size: clamp(2.25rem, 5.5vw, 3.75rem);
+    font-weight: 400;
+    line-height: 1.05;
+    letter-spacing: -.015em;
+    max-width: 14ch;
+  }
+  .intro p { max-width: 30rem; }
+
+  section {
+    display: grid;
+    gap: 1.5rem 3rem;
+    padding: 1.25rem 0 6rem;
+    border-top: 1px solid var(--rule);
+  }
+  h2 { font-size: 1.1875rem; font-weight: 500; }
+  .lede { max-width: 30rem; margin-bottom: 2.5rem; }
+
+  dl.fitxa { max-width: 30rem; }
+  .fitxa div {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: .55rem 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .fitxa dt { font-style: italic; color: var(--muted); }
+  .fitxa dd { text-align: right; }
+
+  /* Dades que falten: la Carla les omple */
+  .tbd {
+    display: inline-block;
+    min-width: 2.5ch;
+    text-align: center;
+    color: var(--muted);
+    border-bottom: 1px dotted var(--muted);
+    line-height: 1.1;
+  }
+
+  .espais {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem .75rem;
+  }
+  .espais figure:nth-child(1) .ph { background: var(--walnut); }
+  .espais figure:nth-child(2) .ph { background: var(--linen); }
+  .espais figure:nth-child(3) .ph { background: var(--oak); }
+  .espais figure:nth-child(4) .ph { background: var(--sage); }
+  .espais figure:nth-child(5) .ph { background: var(--clay); }
+  .espais figure:nth-child(6) .ph { background: var(--linen); }
+
+  .contacte {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    line-height: 1.2;
+    max-width: 22ch;
+    margin-bottom: 2.5rem;
+  }
+
+  footer .wrap {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: .5rem 2rem;
+    padding-bottom: 1.5rem;
+    font-size: .9375rem;
+    color: var(--muted);
+  }
+
+  /* Sòcol de rajola petita, com els que guarda la Carla. Una peça de terra cuita. */
+  .socol {
+    position: relative;
+    height: 73px;
+    background-color: var(--tile);
+    background-image:
+      linear-gradient(var(--grout) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grout) 1px, transparent 1px);
+    background-size: 12px 12px;
+  }
+  .socol::after {
+    content: "";
+    position: absolute;
+    left: calc(12px * 9 + 1px);
+    top: calc(12px * 2 + 1px);
+    width: 11px;
+    height: 11px;
+    background: var(--clay);
+  }
+
+  @media (min-width: 48rem) {
+    .intro { grid-template-columns: 7fr 5fr; align-items: end; }
+    section { grid-template-columns: 13rem 1fr; }
+    .espais { grid-template-columns: repeat(3, 1fr); }
+    .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+    .cols .lede { margin-bottom: 0; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <p class="draft">Esborrany 1 · octubre 2026 · textos, dades i fotos provisionals</p>
+
+  <header>
+    <a class="mark" href="#">El Mas</a>
+    <nav aria-label="Principal">
+      <a href="#casa">La casa</a>
+      <a href="#espais">Espais</a>
+      <a href="#entorn">Entorn</a>
+      <a href="#reserves">Reserves</a>
+    </nav>
+  </header>
+
+  <main>
+    <figure class="wide">
+      <div class="ph" role="img" aria-label="Foto pendent: la façana"></div>
+      <figcaption>La façana · foto pendent</figcaption>
+    </figure>
+
+    <div class="intro">
+      <h1>Un mas sencer, per a vosaltres.</h1>
+      <p>El llogueu sencer: fins a <span class="tbd">—</span> persones, <span class="tbd">—</span> habitacions i tot l’exterior. El portem dues germanes, la Carla i la <span class="tbd">—</span>, i som nosaltres qui us rebem.</p>
+    </div>
+
+    <section id="casa">
+      <h2>La casa</h2>
+      <div class="cols">
+        <p class="lede">Una casa de pagès per estar-s’hi uns quants dies. Una taula prou llarga per a tothom, una cuina completa i espai perquè cadascú faci la seva.</p>
+        <dl class="fitxa">
+          <div><dt>Capacitat</dt><dd><span class="tbd">—</span> persones</dd></div>
+          <div><dt>Habitacions</dt><dd><span class="tbd">—</span></dd></div>
+          <div><dt>Banys</dt><dd><span class="tbd">—</span></dd></div>
+          <div><dt>Superfície</dt><dd><span class="tbd">—</span> m²</dd></div>
+          <div><dt>Exterior</dt><dd><span class="tbd">—</span></dd></div>
+          <div><dt>Estada mínima</dt><dd><span class="tbd">—</span> nits</dd></div>
+          <div><dt>Entrada</dt><dd>a partir de les <span class="tbd">—</span> h</dd></div>
+          <div><dt>Sortida</dt><dd>abans de les <span class="tbd">—</span> h</dd></div>
+          <div><dt>Animals</dt><dd><span class="tbd">—</span></dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section id="espais">
+      <h2>Espais</h2>
+      <div class="espais">
+        <figure><div class="ph" role="img" aria-label="Foto pendent: menjador"></div><figcaption>Menjador</figcaption></figure>
+        <figure><div class="ph" role="img" aria-label="Foto pendent: cuina"></div><figcaption>Cuina</figcaption></figure>
+        <figure><div class="ph" role="img" aria-label="Foto pendent: habitacions"></div><figcaption>Habitacions</figcaption></figure>
+        <figure><div class="ph" role="img" aria-label="Foto pendent: banys"></div><figcaption>Banys</figcaption></figure>
+        <figure><div class="ph" role="img" aria-label="Foto pendent: exterior"></div><figcaption>Exterior</figcaption></figure>
+        <figure><div class="ph" role="img" aria-label="Foto pendent: detalls"></div><figcaption>Detalls</figcaption></figure>
+      </div>
+    </section>
+
+    <section id="entorn">
+      <h2>Entorn</h2>
+      <div class="cols">
+        <p class="lede">El mas és a <span class="tbd">—</span>. L’adreça exacta us l’enviem quan la reserva és confirmada.</p>
+        <dl class="fitxa">
+          <div><dt>Reus</dt><dd><span class="tbd">—</span> min</dd></div>
+          <div><dt>Tarragona</dt><dd><span class="tbd">—</span> min</dd></div>
+          <div><dt>Aeroport de Reus</dt><dd><span class="tbd">—</span> min</dd></div>
+          <div><dt>La platja</dt><dd><span class="tbd">—</span> min</dd></div>
+          <div><dt>Barcelona</dt><dd><span class="tbd">—</span> min</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section id="reserves">
+      <h2>Reserves</h2>
+      <div>
+        <p class="contacte">Escriviu-nos amb les dates i quants sou. Us contestem nosaltres.</p>
+        <dl class="fitxa">
+          <div><dt>Correu</dt><dd><span class="tbd">—</span></dd></div>
+          <div><dt>Telèfon</dt><dd><span class="tbd">—</span></dd></div>
+          <div><dt>Instagram</dt><dd><span class="tbd">—</span></dd></div>
+        </dl>
+      </div>
+    </section>
+  </main>
+</div>
+
+<footer>
+  <div class="wrap">
+    <span>El Mas · lloguer vacacional</span>
+    <span>Registre de Turisme de Catalunya <span class="tbd">—</span></span>
+  </div>
+  <div class="socol" aria-hidden="true"></div>
+</footer>
+
+</body>
+</html>
