@@ -1,0 +1,18 @@
+# GitHub Pages serveix la branca gh-pages. Aquí la mantenim igual que main.
+name: Publica
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  gh-pages:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - run: git push --force origin HEAD:gh-pages
